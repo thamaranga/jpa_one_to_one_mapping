@@ -1,4 +1,4 @@
-package com.hasitha.jpa_one_to_one_mapping;
+package com.hasitha.jpa_one_to_one_mapping.entity;
 
 import javax.persistence.*;
 
