@@ -17,6 +17,7 @@ public class Student {
     private String name;
     private String mobile;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
     /*
     * @OneToOne – This annotation creates one to one relationship
     * between Student and Address entities.
@@ -29,6 +30,8 @@ public class Student {
     * @JoinColumn – You can define column which creates foreign key
     * in a table. In our example, ADDRESS_ID is a foreign key in STUDENT table
     * which references to ID in ADDRESS table.
+    *
+    * Here Student is the parent entity.
     *
     * */
     @JoinColumn(name = "ADDRESS_ID")
