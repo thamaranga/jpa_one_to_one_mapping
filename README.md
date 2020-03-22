@@ -5,8 +5,8 @@ Here there are two entities as Student and Address. Student is the parent entity
 Among Student and Address there is a one to one relationship. Here I have mapped that relationship as a bidirectional  relationship.
 For testing these relationsip I have added  below mappings inside a rest controller called TestResource.
 
-1.Save data     ->  @GetMapping("/save")
-2.Retrieve data ->  @GetMapping("/retrieve")
-3.Update data   ->  @GetMapping("/update")
-4.Delete data   ->  @GetMapping("/delete")
+1.Save data     ->  @GetMapping("/save")          
+2.Retrieve data ->  @GetMapping("/retrieve")        
+3.Update data   ->  @GetMapping("/update")      
+4.Delete data   ->  @GetMapping("/delete")      
 
