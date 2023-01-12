@@ -2,6 +2,7 @@ package com.hasitha.jpa_one_to_one_mapping.resource;
 
 import com.hasitha.jpa_one_to_one_mapping.entity.Address;
 import com.hasitha.jpa_one_to_one_mapping.entity.Student;
+import com.hasitha.jpa_one_to_one_mapping.repository.AddressRepository;
 import com.hasitha.jpa_one_to_one_mapping.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,9 @@ public class TestResource {
 
     @Autowired
     StudentRepository studentRepository;
+
+    @Autowired
+    AddressRepository addressRepository;
 
 
     @GetMapping("/save")
@@ -49,6 +53,24 @@ public class TestResource {
 
     }
 
+    /*
+    * Since I have mapped bi-directionaly, when query for child entity I get parent
+    * entity data also.
+    * */
+    @GetMapping("/retrieveChild")
+    public String retrieveChildData(){
+        Optional<Address> address=addressRepository.findById(Long.parseLong("1"));
+        if(address.isPresent()){
+            Address ads=address.get();
+            Student stu=ads.getStudent();
+            return "Id "+stu.getId()+" Name "+stu.getName()+" Mobile "+stu.getMobile()+" Address ID "+ads.getId()+" City "+ads.getCity();
+        }else{
+            return "No data found";
+
+        }
+
+    }
+
     @GetMapping("/update")
     public String updateData(){
         Optional<Student> student=studentRepository.findById(Long.parseLong("1"));
@@ -66,8 +88,9 @@ public class TestResource {
 
     }
 
+    /**/
     @GetMapping("/delete")
-    public String deleteData(){
+    public String deleteParent(){
         Optional<Student> student=studentRepository.findById(Long.parseLong("1"));
         if(student.isPresent()){
             Student stu=student.get();
@@ -79,4 +102,6 @@ public class TestResource {
         }
 
     }
+
+
 }

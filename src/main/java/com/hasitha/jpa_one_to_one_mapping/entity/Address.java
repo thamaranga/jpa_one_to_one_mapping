@@ -3,6 +3,7 @@ package com.hasitha.jpa_one_to_one_mapping.entity;
 import javax.persistence.*;
 
 @Entity
+/*Here this is the child entity*/
 public class Address {
 
     @Id
@@ -10,6 +11,11 @@ public class Address {
     private Long id;
     private String city;
     @OneToOne(mappedBy = "address")
+    /*
+    * Here, I have to add above annotation since  I am  applying bidirectional
+    * mapping here.
+    *
+    * */
     private Student student;
 
     public Long getId() {

@@ -5,6 +5,7 @@ package com.hasitha.jpa_one_to_one_mapping.entity;
 import javax.persistence.*;
 
 @Entity
+/*Here this is the parent entity*/
 public class Student {
 
     @Id //This annotation says this is the primary key of Student entity
@@ -23,7 +24,7 @@ public class Student {
     * between Student and Address entities.
     * The cascade property (CascadeType.ALL) defines what should happen
     * with child table records when something happens with parent table records.
-    * On DELETE, UPDATE , INSERT operations in parent table child
+    * CascadeType.ALL means On DELETE, UPDATE , INSERT operations in parent table child
     * table should also be affected.
     *
     *
@@ -32,6 +33,10 @@ public class Student {
     * which references to ID in ADDRESS table.
     *
     * Here Student is the parent entity.
+    *
+    * CascadeType.ALL means when we perform any action (SAVE, UPDATE , DELETE etc..) for
+    * parent entity apply
+    * that action for child entity also.
     *
     * */
     @JoinColumn(name = "ADDRESS_ID")
