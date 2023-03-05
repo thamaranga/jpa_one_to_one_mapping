@@ -23,11 +23,11 @@ public class TestResource {
     @GetMapping("/save")
     public String saveData(){
         Student s= new Student();
-		s.setName("hasitha");
-		s.setMobile("0713674126");
+		s.setName("thamaranga");
+		s.setMobile("0713757937");
 
 		Address a= new Address();
-		a.setCity("matara");
+		a.setCity("colombo");
 		s.setAddress(a);
 
 		Student student=studentRepository.save(s);
@@ -41,7 +41,7 @@ public class TestResource {
 
     @GetMapping("/retrieve")
     public String retrieveData(){
-        Optional<Student> student=studentRepository.findById(Long.parseLong("1"));
+        Optional<Student> student=studentRepository.findById(Long.parseLong("3"));
         if(student.isPresent()){
             Student stu=student.get();
             Address address=stu.getAddress();
@@ -59,7 +59,7 @@ public class TestResource {
     * */
     @GetMapping("/retrieveChild")
     public String retrieveChildData(){
-        Optional<Address> address=addressRepository.findById(Long.parseLong("1"));
+        Optional<Address> address=addressRepository.findById(Long.parseLong("2"));
         if(address.isPresent()){
             Address ads=address.get();
             Student stu=ads.getStudent();
@@ -73,12 +73,12 @@ public class TestResource {
 
     @GetMapping("/update")
     public String updateData(){
-        Optional<Student> student=studentRepository.findById(Long.parseLong("1"));
+        Optional<Student> student=studentRepository.findById(Long.parseLong("2"));
         if(student.isPresent()){
             Student stu=student.get();
-            stu.setName("Thamaranga");
+            stu.setName("kankanige");
             Address address=stu.getAddress();
-            address.setCity("Colombo");
+            address.setCity("Kandy");
             Student updatedStudent=studentRepository.save(stu);
             return "Id "+updatedStudent.getId()+" Name "+updatedStudent.getName()+" Mobile "+updatedStudent.getMobile()+" Address ID "+updatedStudent.getAddress().getId()+" City "+updatedStudent.getAddress().getCity();
         }else{
