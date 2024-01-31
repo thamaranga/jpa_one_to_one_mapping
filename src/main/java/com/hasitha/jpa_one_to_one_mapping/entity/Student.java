@@ -12,6 +12,8 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     /*
     * @GeneratedValue annotation is used to specify the primary key generation strategy.
+    * IDENTITY means auto increment ,  AUTO means  primary key generation strategy is chosen
+    * by persistence provider based on the database.
     *
     * */
     private Long id;
